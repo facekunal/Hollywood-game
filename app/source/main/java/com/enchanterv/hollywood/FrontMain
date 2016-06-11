@@ -1,0 +1,38 @@
+package com.enchanterv.hollywood;
+
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+
+public class
+        FrontActivity extends Activity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.front);
+
+        Thread timed=new Thread() {
+            public void run() {
+                try {
+                    sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    //Intent move2p = new Intent("com.enchanterv.hollywood.MAINACTIVITY");
+                    Intent move2p = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(move2p);
+                }
+
+            }
+        } ;          timed.start();
+    }
+    protected void onPause(){
+        super.onPause();
+
+        finish();
+    }
+
+
+
+}
